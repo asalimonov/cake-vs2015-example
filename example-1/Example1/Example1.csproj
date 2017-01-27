@@ -33,10 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cake.Core, Version=0.17.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cake.Core.0.17.0\lib\net45\Cake.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -63,7 +59,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-   <Target Name="BeforeBuild">
+  <Target Name="BeforeBuild">
     <Exec Command="powershell.exe -File $(SolutionDir)build.ps1 -Script $(ProjectDir)build.cake -Target Pre-Build -Configuration $(Configuration) -ScriptArgs &quot;'-Project=$(ProjectPath)'  '-SolutionDir=$(SolutionDir)' '-Platform=$(Platform)'&quot;" WorkingDirectory=".\" />
   </Target>
   <Target Name="AfterBuild">

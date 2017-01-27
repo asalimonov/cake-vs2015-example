@@ -1,0 +1,1 @@
+Invoke-Expression "& 'c:\Program Files (x86)\MSBuild\14.0\Bin\msbuild.exe' Example1.sln /target:Clean /target:Build /p:Configuration=Debug /p:Platform=""Any CPU"""

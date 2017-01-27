@@ -65,3 +65,5 @@ In this example we added targets which run PowerShell scripts, let's consider Pr
   * `-Platform=$(Platform)` - Target paltform (AnyCPU, x86 or x64)
 
 We have to use `&quot;` insted of quote symbol because XML doesn't allow to use it directly.
+
+The solution can be builded without Visaul Studio and Cake tasks will be executed, you can run `build-sln.ps1` as an example.
