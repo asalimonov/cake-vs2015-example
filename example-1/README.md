@@ -2,10 +2,10 @@
 
 How to use Cake scripts for Pre and Post build events.
 
-1. Run Powershell (powershell.exe) with administrator access rights and set execution policy "Unrestricted", execute the following command: `Set-ExecutionPolicy Unrestricted`
-2. In solution's folder download build.ps1 script: `Invoke-WebRequest http://cakebuild.net/download/bootstrapper/windows -OutFile build.ps1`
-3. Install Cake.Core package from NuGet
-4. Open project file (*.csproj) in Visual Studio or in a text editor and add before `</Project>` tag the following code:
+* Run Powershell (powershell.exe) with administrator access rights and set execution policy "Unrestricted", execute the following command: `Set-ExecutionPolicy Unrestricted`
+* In solution's folder download build.ps1 script: `Invoke-WebRequest http://cakebuild.net/download/bootstrapper/windows -OutFile build.ps1`
+* Install Cake.Core package from NuGet
+* Open project file (*.csproj) in Visual Studio or in a text editor and add before `</Project>` tag the following code:
 ```
    <Target Name="BeforeBuild">
     <Exec Command="powershell.exe -File $(SolutionDir)build.ps1 -Script $(ProjectDir)build.cake -Target Pre-Build -Configuration $(Configuration) -ScriptArgs &quot;'-Project=$(ProjectPath)'  '-SolutionDir=$(SolutionDir)' '-Platform=$(Platform)'&quot;" WorkingDirectory=".\" />
@@ -14,7 +14,7 @@ How to use Cake scripts for Pre and Post build events.
     <Exec Command="powershell.exe -File $(SolutionDir)build.ps1 -Script $(ProjectDir)build.cake -Target Post-Build -Configuration $(Configuration) -ScriptArgs &quot;'-Project=$(ProjectPath)'  '-SolutionDir=$(SolutionDir)' '-Platform=$(Platform)'&quot;" WorkingDirectory=".\" />
   </Target>
 ```
-5. Create `build.cake` file in project's dir and write the following code:
+* Create `build.cake` file in project's dir and write the following code:
 ```
 //////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -49,7 +49,7 @@ Task("Default");
 // EXECUTION
 RunTarget(target);
 ```
-6. Rebuil solution. You can see in Output console additional messages about Pre-\Post-Build tasks and information how much time they took.
+* Rebuil solution. You can see in Output console additional messages about Pre-\Post-Build tasks and information how much time they took.
 
 # Short explanation
 Visual Studio uses [MSBuilld](https://msdn.microsoft.com/library/dd393574.aspx) to build a solution and projects which are in it and we added two targets which should be executed when MSBuild tries to build the project. 
